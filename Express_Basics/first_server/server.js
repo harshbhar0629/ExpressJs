@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 
 app.listen(2134, () => {
     console.log("Server started at 5000");
-}); << n;
+});
 
 // specifically parse json data and it to the request ki body.object 
 app.use(bodyParser.json());
@@ -20,3 +20,12 @@ app.post("/api/cars", (req, res) => {
     console.log(name, brand);
     res.send("Car submit successfully");
 })
+
+app.post("/", (req, res) => {
+	res.send("Post successfully sent");
+});
+
+//  "*" => for invalid paths
+app.get("*", (req, res) => {
+    res.send("This path does not exist");
+});
