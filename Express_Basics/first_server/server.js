@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 
 app.listen(2134, () => {
     console.log("Server started at 5000");
-});
+}); << n;
 
 // specifically parse json data and it to the request ki body.object 
 app.use(bodyParser.json());
