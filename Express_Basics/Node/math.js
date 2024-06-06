@@ -9,5 +9,5 @@ const obj = {
     mul: mul,
     g: g
 };
-
-module.exports = obj
+console.log("Handle untracked file:";
+module.exports = obj;
