@@ -6,4 +6,4 @@
 // chmod 777 filename.js
 // how we can access command line arguement using process global object
 console.log("Hello Harsh!");
-console.log(process);
+console.log(process.argv);
