@@ -1,0 +1,36 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Instagram</title>
+	</head>
+	<body
+		style="
+			width: 90vw;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		">
+		<h1>Instagram</h1>
+		<h2>This account belongs to <%= username %></h2>
+		<button style="color: black; background-color: aqua; padding: 10px 12px">
+			Follow
+		</button>
+		<button style="color: black; background-color: aqua; padding: 10px 12px">
+			Message
+		</button>
+
+		<ul>
+			<% for(let i=0; i < followers.length; i++) { %>
+			<li>
+				<%= followers[i] %>
+			</li>
+			<% } %>
+		</ul>
+	</body>
+</html>
