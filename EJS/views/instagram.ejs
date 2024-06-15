@@ -8,7 +8,9 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
 		<title>Instagram</title>
-		<link rel="stylesheet" href="/style.css">
+		<link
+			rel="stylesheet"
+			href="/style.css" />
 	</head>
 	<body
 		style="
@@ -18,15 +20,25 @@
 			align-items: center;
 		">
 		<h1>Instagram</h1>
-		<button style="color: black; background-color: aqua; padding: 10px 12px">
-			Follow
-		</button>
-		<button style="color: black; background-color: aqua; padding: 10px 12px">
-			Message
-		</button>
 
-		<h2>Data: <%= data.name %> </h2>
+		<div class="extra">
+			<button>Follow</button>
+			<button>Message</button>
+		</div>
 
-		
+		<h2>UserName: <%= data.name %></h2>
+		<div class="follower">
+			<h3>Followers: <%= data.followers %></h3>
+			<h3>Following: <%= data.following %></h3>
+		</div>
+
+		<% for( const post of data.posts) { %> <img src="<%= post.image %>"
+		alt="image bheje h" / loading="lazy">
+		<div class="detail">
+			<p>Likes: <%= post.likes %></p>
+			<p>Comments: <%= post.comments %></p>
+		</div>
+		<% } %> <%- include("includes/footer.ejs") %>
 	</body>
+	<script src="/app.js"></script>
 </html>

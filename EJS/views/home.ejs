@@ -6,31 +6,38 @@
 		<meta charset="UTF-8" />
 		<meta
 			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<title>Template</title>
+			content="width=
+    , initial-scale=1.0" />
+		<title>Head</title>
 	</head>
 	<body>
-		<div style="display: flex;
-        flex-direction: column; justify-content: center; align-items: center;">
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			">
 			<h1 style="margin: 0 auto">Preparing Template</h1>
 			<h3>Hello World</h3>
 			<h3>10 Followers</h3>
-			<p style="width: 200px;">
+			<p style="width: 200px">
 				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque
 				perspiciatis corrupti voluptatem temporibus distinctio placeat enim
 				assumenda odit dolor aliquam.
 			</p>
-			<p> <%= 1*2+3 %> </p>
+			<p><%= 1*2+3 %></p>
 			<button
 				style="
 					all: unset;
 					color: red;
 					background-color: yellow;
 					padding: 15px 20px;
-                    border-radius: 10px;
+					border-radius: 10px;
 				">
 				Click me
 			</button>
 		</div>
+		<%- include("includes/footer.ejs") %>
 	</body>
 </html>
