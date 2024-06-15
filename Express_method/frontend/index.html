@@ -1,0 +1,44 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Methods</title>
+	</head>
+	<body>
+		<h2>GET Method:</h2>
+		<form
+			action="/register"
+			method="get">
+			<input
+				type="text"
+				name="user"
+				placeholder="Enter text.." />
+			<input
+				type="password"
+				name="pass"
+				placeholder="Enter pass.." />
+			<button>Submit</button>
+			<!-- URL:- http://127.0.0.1:5500/register?user=hello&pass=1234  it showss all information-->
+		</form>
+		<br />
+		<h2>Post Method:</h2>
+		<form
+			action="/register"
+			method="post">
+			<input
+				type="text"
+				name="user"
+				placeholder="Enter text.." />
+			<input
+				type="password"
+				name="pass"
+				placeholder="Enter pass.." />
+			<button>Submit</button>
+		</form>
+	</body>
+</html>
