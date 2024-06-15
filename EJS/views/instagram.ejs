@@ -8,6 +8,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
 		<title>Instagram</title>
+		<link rel="stylesheet" href="/style.css">
 	</head>
 	<body
 		style="
@@ -17,7 +18,6 @@
 			align-items: center;
 		">
 		<h1>Instagram</h1>
-		<h2>This account belongs to <%= username %></h2>
 		<button style="color: black; background-color: aqua; padding: 10px 12px">
 			Follow
 		</button>
@@ -25,12 +25,8 @@
 			Message
 		</button>
 
-		<ul>
-			<% for(let i=0; i < followers.length; i++) { %>
-			<li>
-				<%= followers[i] %>
-			</li>
-			<% } %>
-		</ul>
+		<h2>Data: <%= data.name %> </h2>
+
+		
 	</body>
 </html>

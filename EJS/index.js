@@ -6,6 +6,9 @@ const path = require("path"); // it include path
 
 app.set("view engine", "ejs"); // it is used to set view == templates
 
+// use middlewares 
+app.use(express.static("public")); // it serve all file to ejs
+
 app.set("views", path.join(__dirname, "/views")); // this can set the path of view folder so that if we run from parent folder then it works fine because it can take absolute path of views folder
 
 
@@ -28,11 +31,26 @@ app.get("/rolldice", (req, res) => {
 });
 
 
+// app.get("/ig/:username", (req, res) => {
+//     const followers = ["harsh", "hello", "hey", "hii", "hmm", "naa", "kha", "wha", "jha", "muje mnaa", "kha pe"];
+//     let { username } = req.params;
+//     res.render("instagram.ejs", { username, followers });
+// })
+
+
 app.get("/ig/:username", (req, res) => {
-    const followers = ["harsh", "hello", "hey", "hii", "hmm", "naa", "kha", "wha", "jha", "muje mnaa", "kha pe"];
     let { username } = req.params;
-    res.render("instagram.ejs", { username, followers });
+    const instaData = require("./data.json");
+    const data = instaData[username];
+    console.log(data);
+    if (data) {
+        return res.render("instagram.ejs", { data });    
+    }
+    else {
+        return res.render("error.ejs", { username });
+    }
 })
+
 
 app.listen(port, () => {
     console.log(`App listening at port ${port}`);
