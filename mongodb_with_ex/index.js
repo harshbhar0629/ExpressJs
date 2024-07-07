@@ -11,7 +11,6 @@ const Chat = require("./models/chat.js");
 main()
 	.then(() => {
 		console.log("Connection successfull");
-		insertion();
 	})
 	.catch((err) => {
 		console.log("Error in connection");
@@ -38,7 +37,8 @@ app.get("/", (req, res) => {
 
 // index route
 app.get("/chats", async (req, res) => {
-	let data = await Chat.find();
-	console.log(data);
-	res.send("Show all chats");
+	let chats = await Chat.find();
+	console.log(chats);
+	// res.send("Show all chats");
+	res.render("index.ejs", {chats});
 });

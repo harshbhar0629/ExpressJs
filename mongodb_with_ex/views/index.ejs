@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+</head>
+<body>
+    <h1>All Chats</h1>
+    <% for( let chat of chats ) { %>
+        <h2>Message: <%= chat.msg %> </h2>
+        <h3>Send by: <%= chat.from %> </h3>
+        <h3>Recieved by: <%= chat.to %> </h3>
+    <% } %>
+</body>
+</html>
