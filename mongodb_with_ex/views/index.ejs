@@ -1,16 +1,98 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App</title>
-</head>
-<body>
-    <h1>All Chats</h1>
-    <% for( let chat of chats ) { %>
-        <h2>Message: <%= chat.msg %> </h2>
-        <h3>Send by: <%= chat.from %> </h3>
-        <h3>Recieved by: <%= chat.to %> </h3>
-    <% } %>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Chat App</title>
+		<style>
+			body {
+				background-color: rgb(56, 54, 54);
+			}
+
+			h1 {
+				padding-left: 40px;
+				color: rgb(35, 236, 112);
+			}
+
+			h2 {
+				display: inline-block;
+				color: rgb(198, 235, 235);
+				padding: 6px 10px;
+				border-radius: 12px;
+				background-color: rgb(79, 174, 236);
+			}
+
+			.btn {
+				all: unset;
+				font-size: 15px;
+				font: bold;
+				border: 1px solid green;
+				color: cadetblue;
+				padding: 8px 12px;
+				background-color: rgb(63, 62, 57);
+				margin-left: 45%;
+				margin-right: 45%;
+				text-align: center;
+				position: fixed;
+			}
+
+			.date,
+			.time {
+				color: antiquewhite;
+			}
+
+			.about {
+				margin-top: 0;
+				color: antiquewhite;
+			}
+			.chat {
+				border-radius: 10px;
+				background-color: rgb(87, 78, 78);
+				display: inline-block;
+				padding: 10px 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<form
+			action="/chats/new"
+			method="get">
+			<button class="btn">New Chat</button>
+		</form>
+
+		<h1>All Chats</h1>
+		<hr />
+		<div class="allChats">
+			<% for( let chat of chats ) { %>
+                <div class="chat">
+                    <form
+                        action="/chats/<%=chat._id%>/edit"
+                        method="get"
+                        class="form">
+                        <h2>Message: <%= chat.msg %></h2>
+                        <button>Edit</button>
+                    </form>
+                    <p class="about">
+                        Send by: <%= chat.from %> , Recieved by: <%= chat.to %>
+                    </p>
+                    <p class="date">
+                        Date: <%= chat.created_at.toString().substr(0, 16) %>
+                    </p>
+                    <p class="time">
+                        Time: <%= chat.created_at.toString().substr(16, 9) %>
+                    </p>
+
+                    <form action="/chats/<%=chat._id%>?_method=delete" method="post">
+                        <button>Delete</button>
+                    </form>
+                </div>
+                <hr />
+			<% } %>
+		</div>
+		<br />
+	</body>
 </html>
