@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const ExpressError = require("./ExpressError.js");
 
 app.use("/", (req, res, next) => {
     console.log("Inside middlewares");
@@ -15,12 +16,17 @@ app.use("/", (req, res, next) => {
 //     res.send("ACCES DENIED!!");
 // });
 
+app.get("/api", (req, res) => {
+	console.log("Inside api route");
+	res.send("Api path working");
+});
+
 const checkToken = (req, res, next) => {
-    let { token } = req.query;
     if (token === "giveaccess") {
         next();
     }
-    res.send("ACCESS DENIED!!");
+    // res.send("ACCESS DENIED!!");
+    throw new Error(401, "ACESS DENIED!!");
 }
 
 // multiple middlewares
@@ -34,11 +40,14 @@ app.get("/", (req, res) => {
     res.send("Root working");
 })
 
-app.get("/api", (req, res) => {
-    console.log("Inside api route");
-    res.send("Api path working");
-});
 
 app.listen(3000, () => {
     console.log("Server started");
+})
+
+// express use own default error handler but we can manipulate that error
+app.use((err, req, res, next) => {
+    let { status = 500, message = "SOME ERROR" } = err;
+    console.log("-----------ERROR----------");
+    res.status(staus).send(message);
 })
