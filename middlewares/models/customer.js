@@ -61,3 +61,22 @@ const addOrders = async () => {
 		{ items: "burger", price: 40 },
 	]);
 };
+
+const delCust = async () => {
+    let data = await Customer.findByIdAndDelete("Enter any valid id");
+    console.log(data);
+}
+
+// customersSchema.pre("findOneAndDelete", () => {
+// 	console.log("Pre midddleware called");
+// });
+
+// after delete the customer we want we have to delete its order also so this is a post work
+customersSchema.post("findOneAndDelete", async (customer) => {
+    // it can access deleted data
+    console.log("Post midddleware called");
+    if (customer.orders.length) {
+        let result = await Order.deleteMany({ _id: { $in: [customer.orders] } });
+        console.log(result);
+    }
+});
